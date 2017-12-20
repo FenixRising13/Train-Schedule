@@ -1,3 +1,39 @@
+html, body {
+    height: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+container {
+    flex: 1 0 auto;
+}
+
+table {
+    width: 100%;
+}
+/* Look at all these table borders. Who doesn't love table borders? */
+thead {
+    border: 1px solid black;
+    
+}
+
+th {
+    border: 1px solid black;
+    text-align: center;
+}
+
+tr {
+    border: 1px solid black;
+}
+
+td {
+        border: 1px solid black;
+        text-align: center;
+}
+
 .jumbotron {
     text-align: center;
     background: grey;
@@ -13,4 +49,8 @@
 .footer {
     background: black;
     color: white;
+    height: 40px;
+    bottom: 0px;
+    width: 100%;
+    padding: 10px;
 }
