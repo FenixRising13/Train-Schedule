@@ -1,0 +1,16 @@
+.jumbotron {
+    text-align: center;
+    background: grey;
+    color: white;
+    margin-top: 10px;
+}
+
+.panel-heading {
+    background: black;
+    color: white;
+}
+
+.footer {
+    background: black;
+    color: white;
+}
