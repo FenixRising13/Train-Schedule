@@ -18,7 +18,9 @@ var database = firebase.database();
 var trainName;
 var destination;
 var frequency;
+var firstTrain;
 var nextArrival;
+var minAway
 
 // This is the click function for the form
 $("#submit").on("click", function (event) {
@@ -29,20 +31,20 @@ $("#submit").on("click", function (event) {
   trainName = $("#trainName").val().trim();
   destination = $("#destination").val().trim();
   frequency = $("#frequency").val().trim();
-  nextArrival = $("#nextArrival").val().trim();
+  firstTrain = $("#firstTrain").val().trim();
 
   // console log data values for debugging
   console.log(trainName);
   console.log(destination);
   console.log(frequency);
-  console.log(nextArrival);
+  console.log(firstTrain);
 
   // Create object newTrain and store variable inside object.
   newTrain = {
     trainName: trainName,
     destination: destination,
     frequency: frequency,
-    nextArrival: nextArrival,
+    firstTrain: firstTrain,
   }
 
   // Push newTrain object to db
@@ -51,17 +53,54 @@ $("#submit").on("click", function (event) {
   trainName = $("#trainName").val("");
   destination = $("#destination").val("");
   frequency = $("#frequency").val("");
-  nextArrival = $("#nextArrival").val("");
+  firstTrain = $("#firstTrain").val("");
 
+  alert("You've added a new train!")
+  $(".footer").html('<audio controls autoplay>' + '<source src="assets/music/train.MP3" type="audio/mp3">' + '</audio>');
 })
 
+
+
+
 database.ref().on("child_added", function (childSnap) {
-// Appends new table data into the HTML. Yay!
+
+  // Stores firstTrain value from db as a variable
+  var initTrain = childSnap.val().firstTrain
+  var intFrequency = childSnap.val().frequency
+  // Use moment to verify proper format of military time
+  var trainProper = moment(initTrain, "hh:mm").subtract(1, "years")
+  console.log(initTrain);
+  console.log(trainProper);
+
+  // Creates a value for current time, logs as "Now"
+  var currentTime = moment();
+  console.log("Now: " + moment(currentTime).format("hh:mm"));
+
+  // Computes the difference in time between trainProper and the current time.
+  var difference = moment().diff(moment(trainProper), "minutes");
+  console.log("Difference: " + difference);
+
+  // Difference in frequency from time difference firstTrain/now
+  var remaining = difference % intFrequency;
+  console.log('Remaining: ' + remaining);
+
+  // Minutes until next train
+  var minAway = intFrequency - remaining;
+  console.log("minAway: " + minAway);
+
+  // Current time plus minAway formatted for military time.
+  var nextArrival = moment().add(minAway, "minutes");
+    console.log("Arriving: " + moment(nextArrival).format("hh:mm"));
+
+  // Appends new table data into the HTML. Yay!
   var newRow = $("<tr>");
   newRow.append("<td>" + childSnap.val().trainName + "</td>");
   newRow.append("<td>" + childSnap.val().destination + "</td>");
   newRow.append("<td>" + childSnap.val().frequency + "</td>");
-  newRow.append("<td>" + childSnap.val().nextArrival + "</td>");
-  newRow.append("<td>" + "" + "</td>"); //Minutes Away
+  newRow.append("<td>" + moment(nextArrival).format("hh:mm") + "</td>"); //Next Arrival
+  newRow.append("<td>" + minAway + "</td>"); //Minutes Away
   $("tbody").append(newRow);
 })
+
+
+

@@ -13,6 +13,9 @@
     <!-- jQuery CDN -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
+    <!-- moment.js CDN -->
+    <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
+
     <!-- Firebase CDN -->
     <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase.js"></script>
 
@@ -76,13 +79,11 @@
                         <input type="text" class="form-control" id="trainName" placeholder="Input field">
                         <label for="">Destination</label>
                         <input type="text" class="form-control" id="destination" placeholder="Input field">
-                        <label for="">Frequency</label>
+                        <label for="">Frequency (min)</label>
                         <input type="text" class="form-control" id="frequency" placeholder="Input field">
-                        <label for="">Next Arrival</label>
-                        <input type="text" class="form-control" id="nextArrival" placeholder="Input field">
+                        <label for="">First Train Time HH:MM in Military Time</label>
+                        <input type="text" class="form-control" id="firstTrain" placeholder="Input field">
                     </div>
-
-
 
                     <button type="submit" id="submit" class="btn btn-primary">Submit</button>
                 </form>
