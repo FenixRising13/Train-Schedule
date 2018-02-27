@@ -1,4 +1,6 @@
 # Train-Schedule
+
+## Definition
 When will your train come in?
 
 ## Prerequisites
