@@ -1,4 +1,3 @@
-
 // Initialize Firebase
 var config = {
   apiKey: "AIzaSyCsxIQN5h5BQDVtHExEKyzGoJM0qILiDtI",
@@ -8,6 +7,7 @@ var config = {
   storageBucket: "train-schedule-96151.appspot.com",
   messagingSenderId: "902832211257"
 };
+
 firebase.initializeApp(config);
 
 
@@ -28,6 +28,7 @@ $("#submit").on("click", function (event) {
   event.preventDefault();
 
   console.log("Submit was clicked")
+  
   trainName = $("#trainName").val().trim();
   destination = $("#destination").val().trim();
   frequency = $("#frequency").val().trim();
@@ -90,17 +91,16 @@ database.ref().on("child_added", function (childSnap) {
 
   // Current time plus minAway formatted for military time.
   var nextArrival = moment().add(minAway, "minutes");
-    console.log("Arriving: " + moment(nextArrival).format("hh:mm"));
+  console.log("Arriving: " + moment(nextArrival).format("hh:mm"));
 
   // Appends new table data into the HTML. Yay!
   var newRow = $("<tr>");
   newRow.append("<td>" + childSnap.val().trainName + "</td>");
   newRow.append("<td>" + childSnap.val().destination + "</td>");
   newRow.append("<td>" + childSnap.val().frequency + "</td>");
-  newRow.append("<td>" + moment(nextArrival).format("hh:mm") + "</td>"); //Next Arrival
-  newRow.append("<td>" + minAway + "</td>"); //Minutes Away
+  //Next Arrival
+  newRow.append("<td>" + moment(nextArrival).format("hh:mm") + "</td>");
+  //Minutes Away
+  newRow.append("<td>" + minAway + "</td>");
   $("tbody").append(newRow);
 })
-
-
-
