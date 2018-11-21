@@ -1,111 +1,131 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Train-Schedule</title>
 
     <!-- Reset.css -->
-    <link rel="stylesheet" href="assets/css/reset.css">
+    <link rel="stylesheet" href="assets/css/reset.css" />
 
     <!-- jQuery CDN -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.min.js"
+      integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+      crossorigin="anonymous"
+    ></script>
 
-    <!-- moment.js CDN -->
-    <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
+    <!-- Moment.JS CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
 
     <!-- Firebase CDN -->
-    <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.5.9/firebase.js"></script>
 
     <!-- Latest compiled and minified Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
-        crossorigin="anonymous">
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+      integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+      crossorigin="anonymous"
+    />
 
     <!-- Latest compiled and minified Bootstrap JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
-        crossorigin="anonymous"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+      integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+      crossorigin="anonymous"
+    ></script>
+
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+      integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+      crossorigin="anonymous"
+    ></script>
 
     <!-- Link style.css -->
-    <link rel="stylesheet" href="assets/css/style.css">
-</head>
+    <link rel="stylesheet" href="assets/css/style.css" />
+  </head>
 
-<body>
-    <script src="https://www.gstatic.com/firebasejs/4.8.0/firebase.js"></script>
-<!-- Enclosed the whole darn thing in a container this time. -->
+  <body>
     <div class="container">
-        <!-- This is not a sporting event. -->
-        <div class="jumbotron">
-            <div class="container">
-                <h1>Transit Authority Seasonal Schedule</h1>
-                <p>We're not always there when you call, but we're always on time</p>
-            </div>
+      <div class="jumbotron">
+        <div class="container">
+          <h1>Transit Authority Seasonal Schedule</h1>
+          <p>We're not always there when you call, but we're always on time</p>
         </div>
+      </div>
 
-        <!-- Schedule Panel -->
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h3 class="panel-title">Schedule</h3>
-            </div>
-            <div class="panel-body">
-                <table>
-                    <thead>
-                        <th>Train Name</th>
-                        <th>Destination</th>
-                        <th>Frequency (min)</th>
-                        <th>Next Arrival</th>
-                        <th>Minutes Away</th>
-                    </thead>
-                    <tbody>
-
-                    </tbody>
-
-                </table>
-            </div>
+      <!-- Schedule Card -->
+      <div class="card card-default m-2">
+        <div class="card-body">
+          <h3 class="card-title">Schedule</h3>
+          <table>
+            <thead>
+              <th>Train Name</th>
+              <th>Destination</th>
+              <th>Frequency (min)</th>
+              <th>Next Arrival</th>
+              <th>Minutes Away</th>
+            </thead>
+            <tbody></tbody>
+          </table>
         </div>
+      </div>
 
-        <!-- Submit New Panel -->
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h3 class="panel-title">Update Schedule</h3>
+      <!-- Submit New Card -->
+      <div class="card card-default m-2">
+        <div class="card-body">
+          <h3 class="card-title">Update Schedule</h3>
+
+          <form action="" method="POST" role="form">
+            <div class="form-group">
+              <label for="">Train Name</label>
+              <input
+                type="text"
+                class="form-control"
+                id="trainName"
+                placeholder="Input field"
+              />
+              <label for="">Destination</label>
+              <input
+                type="text"
+                class="form-control"
+                id="destination"
+                placeholder="Input field"
+              />
+              <label for="">Frequency (min)</label>
+              <input
+                type="text"
+                class="form-control"
+                id="frequency"
+                placeholder="Input field"
+              />
+              <label for="">First Train Time HH:MM in Military Time</label>
+              <input
+                type="text"
+                class="form-control"
+                id="firstTrain"
+                placeholder="Input field"
+              />
             </div>
-            <div class="panel-body">
 
-                <form action="" method="POST" role="form">
-
-                    <div class="form-group">
-                        <label for="">Train Name</label>
-                        <input type="text" class="form-control" id="trainName" placeholder="Input field">
-                        <label for="">Destination</label>
-                        <input type="text" class="form-control" id="destination" placeholder="Input field">
-                        <label for="">Frequency (min)</label>
-                        <input type="text" class="form-control" id="frequency" placeholder="Input field">
-                        <label for="">First Train Time HH:MM in Military Time</label>
-                        <input type="text" class="form-control" id="firstTrain" placeholder="Input field">
-                    </div>
-
-                    <button type="submit" id="submit" class="btn btn-primary">Submit</button>
-                </form>
-
-            </div>
+            <button type="submit" id="submit" class="btn btn-primary">
+              Submit
+            </button>
+          </form>
         </div>
-
+      </div>
     </div>
-
-
 
     <!-- Links app.js -->
     <script src="assets/javascript/app.js"></script>
 
-    <!-- Default Footer - KISS -->
+    <!-- Default Footer -->
     <footer class="footer">
-        <p class="text-muted text-muted-footer text-center">
-            &copy; Copyright 2017 Mark Powalisz
-
-        </p>
+      <p class="text-muted text-muted-footer text-center">
+        &copy; Copyright 2018 Mark Powalisz
+      </p>
     </footer>
-
-</body>
-
+  </body>
 </html>

@@ -10,7 +10,6 @@ var config = {
 
 firebase.initializeApp(config);
 
-
 // Create a variable to reference the database
 var database = firebase.database();
 
@@ -20,19 +19,26 @@ var destination;
 var frequency;
 var firstTrain;
 var nextArrival;
-var minAway
+var minAway;
 
 // This is the click function for the form
-$("#submit").on("click", function (event) {
-
+$("#submit").on("click", function(event) {
   event.preventDefault();
 
-  console.log("Submit was clicked")
-  
-  trainName = $("#trainName").val().trim();
-  destination = $("#destination").val().trim();
-  frequency = $("#frequency").val().trim();
-  firstTrain = $("#firstTrain").val().trim();
+  console.log("Submit was clicked");
+
+  trainName = $("#trainName")
+    .val()
+    .trim();
+  destination = $("#destination")
+    .val()
+    .trim();
+  frequency = $("#frequency")
+    .val()
+    .trim();
+  firstTrain = $("#firstTrain")
+    .val()
+    .trim();
 
   // console log data values for debugging
   console.log(trainName);
@@ -45,8 +51,8 @@ $("#submit").on("click", function (event) {
     trainName: trainName,
     destination: destination,
     frequency: frequency,
-    firstTrain: firstTrain,
-  }
+    firstTrain: firstTrain
+  };
 
   // Push newTrain object to db
   database.ref().push(newTrain);
@@ -56,20 +62,20 @@ $("#submit").on("click", function (event) {
   frequency = $("#frequency").val("");
   firstTrain = $("#firstTrain").val("");
 
-  alert("You've added a new train!")
-  $(".footer").html('<audio controls autoplay>' + '<source src="assets/music/train.MP3" type="audio/mp3">' + '</audio>');
-})
+  alert("You've added a new train!");
+  $(".footer").html(
+    "<audio controls autoplay>" +
+      '<source src="assets/music/train.MP3" type="audio/mp3">' +
+      "</audio>"
+  );
+});
 
-
-
-
-database.ref().on("child_added", function (childSnap) {
-
+database.ref().on("child_added", function(childSnap) {
   // Stores firstTrain value from db as a variable
-  var initTrain = childSnap.val().firstTrain
-  var intFrequency = childSnap.val().frequency
+  var initTrain = childSnap.val().firstTrain;
+  var intFrequency = childSnap.val().frequency;
   // Use moment to verify proper format of military time
-  var trainProper = moment(initTrain, "hh:mm").subtract(1, "years")
+  var trainProper = moment(initTrain, "hh:mm").subtract(1, "years");
   console.log(initTrain);
   console.log(trainProper);
 
@@ -83,7 +89,7 @@ database.ref().on("child_added", function (childSnap) {
 
   // Difference in frequency from time difference firstTrain/now
   var remaining = difference % intFrequency;
-  console.log('Remaining: ' + remaining);
+  console.log("Remaining: " + remaining);
 
   // Minutes until next train
   var minAway = intFrequency - remaining;
@@ -103,4 +109,4 @@ database.ref().on("child_added", function (childSnap) {
   //Minutes Away
   newRow.append("<td>" + minAway + "</td>");
   $("tbody").append(newRow);
-})
+});
