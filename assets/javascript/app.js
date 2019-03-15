@@ -47,7 +47,7 @@ $("#submit").on("click", function(event) {
   console.log(firstTrain);
 
   // Create object newTrain and store variable inside object.
-  newTrain = {
+  var newTrain = {
     trainName: trainName,
     destination: destination,
     frequency: frequency,
@@ -65,7 +65,7 @@ $("#submit").on("click", function(event) {
   alert("You've added a new train!");
   $(".footer").html(
     "<audio controls autoplay>" +
-      '<source src="assets/music/train.MP3" type="audio/mp3">' +
+      "<source src='assets/music/train.MP3' type='audio/mp3'>" +
       "</audio>"
   );
 });
@@ -76,28 +76,21 @@ database.ref().on("child_added", function(childSnap) {
   var intFrequency = childSnap.val().frequency;
   // Use moment to verify proper format of military time
   var trainProper = moment(initTrain, "hh:mm").subtract(1, "years");
-  console.log(initTrain);
-  console.log(trainProper);
 
   // Creates a value for current time, logs as "Now"
   var currentTime = moment();
-  console.log("Now: " + moment(currentTime).format("hh:mm"));
 
   // Computes the difference in time between trainProper and the current time.
   var difference = moment().diff(moment(trainProper), "minutes");
-  console.log("Difference: " + difference);
 
   // Difference in frequency from time difference firstTrain/now
   var remaining = difference % intFrequency;
-  console.log("Remaining: " + remaining);
 
   // Minutes until next train
   var minAway = intFrequency - remaining;
-  console.log("minAway: " + minAway);
 
   // Current time plus minAway formatted for military time.
   var nextArrival = moment().add(minAway, "minutes");
-  console.log("Arriving: " + moment(nextArrival).format("hh:mm"));
 
   // Appends new table data into the HTML. Yay!
   var newRow = $("<tr>");
