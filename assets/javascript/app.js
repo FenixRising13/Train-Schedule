@@ -46,14 +46,6 @@ $("#submit").on("click", function(event) {
     frstTrn: firstTrain
   };
 
-  // This is an object created to test Codacy's ability to detect unused code.
-  var fifthTrain = {
-    trainName: trainName,
-    destination: destination,
-    frequency: frequency,
-    firstTrain: firstTrain
-  };
-
   // Push newTrain object to db
   database.ref().push(newTrain);
 
