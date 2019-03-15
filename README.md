@@ -14,11 +14,11 @@ Someone refactoring or forking this repository should add their own Firebase cre
 
 - HTML
 - CSS
-- Javascript
-- jQuery - jquery.com
-- Bootstrap - getbootstrap.com
-- Firebase - firebase.google.com
-- MomentJS - momentjs.com
+- JavaScript
+- jQuery - [Link](https://jquery.com/)
+- Bootstrap - [Link](https://getbootstrap.com/)
+- Firebase - [Link](https://firebase.google.com)
+- MomentJS - [Link](https://momentjs.com)
 
 ## Built With
 
@@ -31,3 +31,5 @@ Visual Studio Code
 ## Author
 
 Mark Powalisz
+
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/430b0414a8e9414d931bc469d20475b7)](https://www.codacy.com/app/mpowalisz/Train-Schedule?utm_source=github.com&utm_medium=referral&utm_content=mpowalisz/Train-Schedule&utm_campaign=Badge_Grade)
