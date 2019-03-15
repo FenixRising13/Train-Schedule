@@ -25,8 +25,6 @@ var minAway;
 $("#submit").on("click", function(event) {
   event.preventDefault();
 
-  console.log("Submit was clicked");
-
   trainName = $("#trainName")
     .val()
     .trim();
@@ -39,12 +37,6 @@ $("#submit").on("click", function(event) {
   firstTrain = $("#firstTrain")
     .val()
     .trim();
-
-  // console log data values for debugging
-  console.log(trainName);
-  console.log(destination);
-  console.log(frequency);
-  console.log(firstTrain);
 
   // Create object newTrain and store variable inside object.
   var newTrain = {
