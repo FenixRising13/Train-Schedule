@@ -40,10 +40,10 @@ $("#submit").on("click", function(event) {
 
   // Create object newTrain and store variable inside object.
   var newTrain = {
-    trainName: trainName,
-    destination: destination,
-    frequency: frequency,
-    firstTrain: firstTrain
+    trnNm: trainName,
+    dest: destination,
+    freq: frequency,
+    frstTrn: firstTrain
   };
 
   // This is an object created to test Codacy's ability to detect unused code.
@@ -76,9 +76,6 @@ database.ref().on("child_added", function(childSnap) {
   var intFrequency = childSnap.val().frequency;
   // Use moment to verify proper format of military time
   var trainProper = moment(initTrain, "hh:mm").subtract(1, "years");
-
-  // Creates a value for current time, logs as "Now"
-  var currentTime = moment();
 
   // Computes the difference in time between trainProper and the current time.
   var difference = moment().diff(moment(trainProper), "minutes");
