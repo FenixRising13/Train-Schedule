@@ -4,12 +4,14 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <!-- Added keywords, though it's a GitHub Pages site -->
+    <meta name="keywords" content="HTML, CSS, Firebase" />
     <title>Train-Schedule</title>
 
     <!-- jQuery CDN -->
     <script
-      src="https://code.jquery.com/jquery-3.3.1.min.js"
-      integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+      src="https://code.jquery.com/jquery-3.4.1.min.js"
+      integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
       crossorigin="anonymous"
     ></script>
 
@@ -46,21 +48,20 @@
 
   <body>
     <div class="container">
-      <div class="jumbotron">
-        <div class="container">
-          <h1>Transit Authority Seasonal Schedule</h1>
-          <p>We're not always there when you call, but we're always on time</p>
-        </div>
+      <div class="jumbotron text-center">
+        <h1>Transit Authority Seasonal Schedule</h1>
+        <p>We're not always there when you call, but we're always on time</p>
       </div>
 
       <!-- Schedule Card -->
-      <div class="card card-default m-2">
+      <div class="card card-default">
         <div class="card-body">
           <h3 class="card-title">Schedule</h3>
-          <table>
-            <thead>
+          <table class="table table-striped text-center table-sm">
+            <thead class="thead-dark">
               <th>Train Name</th>
               <th>Destination</th>
+              <!-- <th>First Train</th> -->
               <th>Frequency (min)</th>
               <th>Next Arrival</th>
               <th>Minutes Away</th>
@@ -70,40 +71,42 @@
         </div>
       </div>
 
-      <!-- Submit New Card -->
-      <div class="card card-default m-2">
+      <!-- Submit New - Card -->
+      <div class="card card-default mt-2 mb-2">
         <div class="card-body">
           <h3 class="card-title">Update Schedule</h3>
 
           <form action="" method="POST" role="form">
             <div class="form-group">
-              <label for="">Train Name</label>
+              <label for="trainName">Train Name</label>
               <input
                 type="text"
                 class="form-control"
                 id="trainName"
-                placeholder="Input field"
+                placeholder="Blue Line"
               />
-              <label for="">Destination</label>
+              <label for="destination">Destination</label>
               <input
                 type="text"
                 class="form-control"
                 id="destination"
-                placeholder="Input field"
+                placeholder="Orlando, FL"
               />
-              <label for="">Frequency (min)</label>
+              <label for="frequency">Frequency (min)</label>
               <input
-                type="text"
+                type="number"
                 class="form-control"
                 id="frequency"
-                placeholder="Input field"
+                placeholder="30"
               />
-              <label for="">First Train Time HH:MM in Military Time</label>
+              <label for="firstTrain"
+                >First Train Time (in Military Time)</label
+              >
               <input
                 type="text"
                 class="form-control"
                 id="firstTrain"
-                placeholder="Input field"
+                placeholder="HH:MM"
               />
             </div>
 
@@ -120,8 +123,8 @@
 
     <!-- Default Footer -->
     <footer class="footer">
-      <p class="text-muted text-muted-footer text-center">
-        &copy; Copyright 2018 Mark Powalisz
+      <p class="text-center">
+        Published by Mark Powalisz 2020
       </p>
     </footer>
   </body>

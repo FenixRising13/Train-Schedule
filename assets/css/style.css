@@ -13,35 +13,9 @@ body {
 }
 
 .jumbotron {
-  text-align: center;
   background: grey;
   color: white;
   margin-top: 10px;
-  height: 220px;
-  padding-top: 50px;
-}
-
-table {
-  width: 100%;
-}
-
-/* Look at all these table borders. Who doesn't love table borders? */
-thead {
-  border: 1px solid black;
-}
-
-th {
-  border: 1px solid black;
-  text-align: center;
-}
-
-tr {
-  border: 1px solid black;
-}
-
-td {
-  border: 1px solid black;
-  text-align: center;
 }
 
 .footer {

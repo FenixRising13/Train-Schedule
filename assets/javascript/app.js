@@ -40,10 +40,10 @@ $("#submit").on("click", function(event) {
 
   // Create object newTrain and store variable inside object.
   var newTrain = {
-    trnNm: trainName,
-    dest: destination,
-    freq: frequency,
-    frstTrn: firstTrain
+    trainName: trainName,
+    destination: destination,
+    frequency: frequency,
+    firstTrain: firstTrain
   };
 
   // Push newTrain object to db
@@ -55,11 +55,6 @@ $("#submit").on("click", function(event) {
   firstTrain = $("#firstTrain").val("");
 
   alert("You've added a new train!");
-  $(".footer").html(
-    "<audio controls autoplay>" +
-      "<source src='assets/music/train.MP3' type='audio/mp3'>" +
-      "</audio>"
-  );
 });
 
 database.ref().on("child_added", function(childSnap) {
@@ -85,6 +80,7 @@ database.ref().on("child_added", function(childSnap) {
   var newRow = $("<tr>");
   newRow.append("<td>" + childSnap.val().trainName + "</td>");
   newRow.append("<td>" + childSnap.val().destination + "</td>");
+  // newRow.append("<td>" + childSnap.val().firstTrain + "</td>");
   newRow.append("<td>" + childSnap.val().frequency + "</td>");
   //Next Arrival
   newRow.append("<td>" + moment(nextArrival).format("hh:mm") + "</td>");
